@@ -1,8 +1,5 @@
-import 'package:bloc_base/modules/counter/counter_cubit.dart';
+import 'package:bloc_base/config/routes/routes_handler.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'core/counter/counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,14 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => CounterCubit(),
-          ),
-        ],
-        child: Counter(),
-      ),
+      onGenerateRoute: RoutesHandler().generateRoute,
+      initialRoute: Routes.HOME,
     );
   }
 }
