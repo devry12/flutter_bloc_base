@@ -2,6 +2,7 @@ import 'package:bloc_base/config/routes/routes_handler.dart';
 import 'package:bloc_base/modules/counter/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:routemaster/routemaster.dart';
 
 class Counter extends StatelessWidget {
   @override
@@ -44,8 +45,9 @@ class Counter extends StatelessWidget {
             ),
             FloatingActionButton(
               heroTag: "move",
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.ANOTHERPAGE);
+              onPressed: () async {
+                var data = await Routemaster.of(context).push('/another');
+                print("ini apaa yaa $data");
               },
               tooltip: 'Increment',
               child: const Icon(Icons.arrow_right_alt_outlined),

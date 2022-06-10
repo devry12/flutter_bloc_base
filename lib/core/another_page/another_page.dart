@@ -9,12 +9,16 @@ class AnotherPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Another Page"),
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [Text("Another_page")],
-      )),
+      body: WillPopScope(
+          onWillPop: () {
+            Navigator.of(context).pop("ini data dari pagi another");
+            return Future<bool>.value(false);
+          },
+          child: Container(
+            child: Center(
+              child: Text("ini halaman another"),
+            ),
+          )),
     );
   }
 }
